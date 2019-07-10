@@ -18,14 +18,14 @@ build_catalog() {
     	first=
         fi
 
-        jq 'del(.command) + { dockerImage: ("cortexneurons/" + (.name | ascii_downcase) + ":devel") }' ${JSON} >> ${DIR}/catalog-devel.json
-        jq 'del(.command) + { dockerImage: ("cortexneurons/" + (.name | ascii_downcase) + ":" + .version) }' ${JSON} >> ${DIR}/catalog-stable.json
-        jq 'del(.command) + { dockerImage: ("cortexneurons/" + (.name | ascii_downcase) + ":" + (.version | split("."))[0]) }' ${JSON} >> ${DIR}/catalog.json
+        jq 'del(.command) + { dockerImage: ("cortexneurons/" + (.name | ascii_downcase) + ":devel") }' ${JSON} >> ${DIR}/${DIR}-devel.json
+        jq 'del(.command) + { dockerImage: ("cortexneurons/" + (.name | ascii_downcase) + ":" + .version) }' ${JSON} >> ${DIR}/${DIR}-stable.json
+        jq 'del(.command) + { dockerImage: ("cortexneurons/" + (.name | ascii_downcase) + ":" + (.version | split("."))[0]) }' ${JSON} >> ${DIR}/${DIR}.json
     done
 
-    echo ']' >> ${DIR}/catalog.json
-    echo ']' >> ${DIR}/catalog-devel.json
-    echo ']' >> ${DIR}/catalog-stable.json
+    echo ']' >> ${DIR}/${DIR}.json
+    echo ']' >> ${DIR}/${DIR}-devel.json
+    echo ']' >> ${DIR}/${DIR}-stable.json
 }
 
 BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
