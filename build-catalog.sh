@@ -2,9 +2,9 @@
 
 build_catalog() {
     DIR=$1
-    echo '[' > ${DIR}/catalog.json
-    echo '[' > ${DIR}/catalog-devel.json
-    echo '[' > ${DIR}/catalog-stable.json
+    echo '[' > ${DIR}/${DIR}.json
+    echo '[' > ${DIR}/${DIR}-devel.json
+    echo '[' > ${DIR}/${DIR}-stable.json
 
     first=1
     for JSON in ${DIR}/*/*.json
@@ -12,8 +12,8 @@ build_catalog() {
         if test -z "${first}"
         then
     	echo ',' >> ${DIR}/catalog.json
-    	echo ',' >> ${DIR}/catalog-devel.json
-    	echo ',' >> ${DIR}/catalog-stable.json
+    	echo ',' >> ${DIR}/${DIR}-devel.json
+    	echo ',' >> ${DIR}/${DIR}-stable.json
         else
     	first=
         fi
