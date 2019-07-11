@@ -11,7 +11,7 @@ build_catalog() {
     do
         if test -z "${first}"
         then
-    	echo ',' >> ${DIR}/catalog.json
+    	echo ',' >> ${DIR}/${DIR}.json
     	echo ',' >> ${DIR}/${DIR}-devel.json
     	echo ',' >> ${DIR}/${DIR}-stable.json
         else
