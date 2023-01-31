@@ -18,9 +18,9 @@ build_catalog() {
     	first=
         fi
 
-        jq 'del(.command) + { dockerImage: ("cortexneurons/" + (.name | ascii_downcase) + ":devel") }' ${JSON} >> ${DIR}/${DIR}-devel.json
-        jq 'del(.command) + { dockerImage: ("cortexneurons/" + (.name | ascii_downcase) + ":" + .version) }' ${JSON} >> ${DIR}/${DIR}-stable.json
-        jq 'del(.command) + { dockerImage: ("cortexneurons/" + (.name | ascii_downcase) + ":" + (.version | split("."))[0]) }' ${JSON} >> ${DIR}/${DIR}.json
+        jq 'del(.command) + { dockerImage: ("docker.io/cortexneurons/" + (.name | ascii_downcase) + ":devel") }' ${JSON} >> ${DIR}/${DIR}-devel.json
+        jq 'del(.command) + { dockerImage: ("docker.io/cortexneurons/" + (.name | ascii_downcase) + ":" + .version) }' ${JSON} >> ${DIR}/${DIR}-stable.json
+        jq 'del(.command) + { dockerImage: ("docker.io/cortexneurons/" + (.name | ascii_downcase) + ":" + (.version | split("."))[0]) }' ${JSON} >> ${DIR}/${DIR}.json
     done
 
     echo ']' >> ${DIR}/${DIR}.json
